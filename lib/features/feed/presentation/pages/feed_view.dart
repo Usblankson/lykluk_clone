@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:lykluk_clone/features/feed/presentation/pages/video_feed_view.dart';
@@ -35,7 +36,7 @@ class _FeedViewState extends State<FeedView> {
 
   void initStateAsync() async {
     final videoBucket = FirebaseStorage.instanceFor(
-      bucket: "gs://tiktok-clone-d6798.appspot.com",
+      bucket: dotenv.get('BUCKET'),
     );
 
     final videoBucketRef = videoBucket.ref();
